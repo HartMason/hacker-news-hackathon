@@ -3,6 +3,7 @@ import {Component} from 'react';
 import Header from './components/Header';
 
 //hackathon
+//made changes
 
 class App extends Component {
   constructor(){
