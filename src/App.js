@@ -1,9 +1,11 @@
 import "./App.css";
 import { Component } from "react";
 import Header from "./components/Header";
+import BodyCard from "./components/BodyCard";
 import axios from "axios";
 
 //hackathon
+// testing
 
 class App extends Component {
   constructor() {
@@ -63,9 +65,14 @@ class App extends Component {
           category={this.category}
           searchParam={this.searchParam}
         />
+        <BodyCard
+
+        />
       </div>
+
     );
   }
 }
 
 export default App;
+
