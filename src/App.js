@@ -8,12 +8,6 @@ import HeaderSearch from './components/HeaderSearch';
 class App extends Component {
   constructor(){
     super()
-
-    this.state = {
-      listOfStories: [],
-      category: "stories",
-      searchParam: ""
-    }
   }
 
 
