@@ -1,5 +1,6 @@
 import './App.css';
 import {Component} from 'react';
+import Header from './components/Header';
 import HeaderSearch from './components/HeaderSearch';
 
 //hackathon
@@ -8,12 +9,17 @@ import HeaderSearch from './components/HeaderSearch';
 class App extends Component {
   constructor(){
     super()
+
+    this.state = {
+
+    }
   }
 
 
   render(){
     return (
-      <div className="body-container" style={{display: "flex", width: "100vw", maxWidth: "1200px", minWidth:"900px", margin: "auto"}}>
+      <div>
+        <Header />
         <HeaderSearch />
       </div>
     );
