@@ -1,6 +1,7 @@
 import "./App.css";
 import { Component } from "react";
 import Header from "./components/Header";
+import HeaderSearch from './components/HeaderSearch';
 import BodyCard from "./components/BodyCard";
 import axios from "axios";
 
@@ -65,6 +66,7 @@ class App extends Component {
           category={this.category}
           searchParam={this.searchParam}
         />
+        <HeaderSearch />
         <BodyCard
 
         />
@@ -73,6 +75,8 @@ class App extends Component {
     );
   }
 }
+
+
 
 export default App;
 
