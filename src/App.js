@@ -3,19 +3,20 @@ import { Component } from "react";
 import Header from "./components/Header";
 import HeaderSearch from './components/HeaderSearch';
 import BodyCard from "./components/BodyCard";
+// import Pagination from "./components/Pagination";
 import axios from "axios";
 
 //hackathon
 // testing
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       listOfStories: [],
       category: "stories",
-      searchParam: "",
+      searchParam: ""
     };
   }
 
@@ -67,10 +68,11 @@ class App extends Component {
           searchParam={this.searchParam}
         />
         <HeaderSearch />
-        <BodyCard
-
-        />
+        <BodyCard/>
+        
       </div>
+
+    
 
     );
   }
