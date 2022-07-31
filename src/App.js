@@ -1,12 +1,15 @@
-import './App.css';
-import {Component} from 'react';
-import Header from './components/Header';
+import "./App.css";
+import { Component } from "react";
+import Header from "./components/Header";
+
+import BodyCard from "./components/BodyCard";
+
 
 //hackathon
 // testing
 
 class App extends Component {
-  constructor(){
+  constructor() {
     super()
 
     this.state = {
@@ -15,12 +18,24 @@ class App extends Component {
   }
 
 
-  render(){
+  render() {
     return (
       <div>
-        <Header />
+        <Header
+          handleSubmit={this.handleSubmit}
+          setCategory={this.setCategory}
+          setSearchParams={this.setSearchParams}
+          category={this.category}
+          searchParam={this.searchParam}
+        />
+        <BodyCard
+
+        />
       </div>
+
     );
-}}
+  }
+}
 
 export default App;
+
