@@ -3,7 +3,7 @@ import { Component } from "react";
 import Header from "./components/Header";
 import HeaderSearch from './components/HeaderSearch';
 import BodyCard from "./components/BodyCard";
-import Pagination from "./components/Pagination";
+// import Pagination from "./components/Pagination";
 import axios from "axios";
 
 //hackathon
@@ -14,12 +14,12 @@ class App extends Component {
     super(props);
 
     this.state = {
-      curerentPage: "1",
+      currentPage: "1",
       setCurrentPage: "1",
       recordsPerPage: "10",
       setListofStories: [],
       listOfStories: [],
-      category: "stories",
+      category: "story",
       searchParam: ""
 
     };
@@ -65,6 +65,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <HeaderSearch />
         <Header
           handleSubmit={this.handleSubmit}
           setCategory={this.setCategory}
@@ -72,9 +73,12 @@ class App extends Component {
           category={this.category}
           searchParam={this.searchParam}
         />
-        <HeaderSearch />
-        <BodyCard/>
-        <Pagination />      
+        <ul>{this.state.listOfStories.map(
+        (story, index)=>(
+        <BodyCard key={index} title={story.title} url={story.url} author={story.author} points={story.points} timePosted={story.created_at} comments={story.num_comments}/>
+        ))}
+        </ul>
+        {/* <Pagination currentPage={this.state.currentPage} setCurrentPage={this.state.setCurrentPage} recordsPerPage={this.state.recordsPerPage} setListofStories={this.state.setListofStories} listOfStories={this.state.listOfStories} />       */}
       
       </div>
 

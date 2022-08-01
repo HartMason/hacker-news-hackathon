@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 // if error occurs
 // function usePagination(data = [], itemsPerPage) { ... }
 
 // Configure Number of Items & Current Page
 function Pagination(data, itemsPerPage) {
+  const {listOfStories } = data;
+  setTimeout(()=>{console.log("listofStories", listOfStories)}, 500)
+  
   const [currentPage, setCurrentPage] = useState(1);
   const maxPage = Math.ceil(data.length / itemsPerPage);
 
