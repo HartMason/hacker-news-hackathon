@@ -3,7 +3,7 @@ import { Component } from "react";
 import Header from "./components/Header";
 import HeaderSearch from './components/HeaderSearch';
 import BodyCard from "./components/BodyCard";
-// import Pagination from "./components/Pagination";
+import Pagination from "./components/Pagination";
 import axios from "axios";
 
 //hackathon
@@ -28,6 +28,7 @@ class App extends Component {
       .then((res) => {
         console.log(res);
         this.setState({listOfStories: res.data.hits});
+        console.log("listofstories", this.state.listOfStories)
       });
   };
 
@@ -69,7 +70,8 @@ class App extends Component {
         />
         <HeaderSearch />
         <BodyCard/>
-        
+        <Pagination />      
+      
       </div>
 
     
