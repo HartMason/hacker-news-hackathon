@@ -3,8 +3,12 @@ import { Component } from "react";
 import Header from "./components/Header";
 import HeaderSearch from './components/HeaderSearch';
 import BodyCard from "./components/BodyCard";
-// import Pagination from "./components/Pagination";
 import axios from "axios";
+import * as React from 'react';
+
+
+
+
 
 //hackathon
 // testing
@@ -12,32 +16,29 @@ import axios from "axios";
 class App extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      curerentPage: "1",
-      setCurrentPage: "1",
-      recordsPerPage: "10",
-      setListofStories: [],
       listOfStories: [],
       category: "stories",
       searchParam: ""
 
     };
   }
+  
 
   componentDidMount = () => {
     axios
       .get(
         "https://hn.algolia.com/api/v1/search?tags=front_page&hitsPerPage=50"
       )
-      .then((res) => {
-        console.log(res);
-        this.setState({listOfStories: res.data.hits});
+      .then(res => {
+        const listOfStories = res.data.hits
+        this.setState({ listOfStories })
+        console.log(listOfStories);
       });
   };
 
   componentDidUpdate = () => {
-    // axios.get(`http://hn.algolia.com/api/v1/search?query=${this.state.category}&hitsPerPage=50`)
+    axios.get(`http://hn.algolia.com/api/v1/search?query=${this.state.category}&hitsPerPage=50`)
     console.log(this.state);
   };
 
@@ -52,7 +53,7 @@ class App extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     if (this.state.category === "author") {
-      return axios.get(`http://hn.algolia.com/api/v1/search?tags=story,author_${this.state.searchParam}&hitsPerPage=50`).then((res) => {
+      return axios.get(`http://hn.algolia.com/api/v1/search?tags=listOfStories,author_${this.state.searchParam}&hitsPerPage=50`).then((res) => {
         this.setState({listOfStories: res.data.hits})
       }) 
     }
@@ -60,10 +61,10 @@ class App extends Component {
       this.setState({listOfStories: res.data.hits})
     }) 
   }
-
+  
   render() {
     return (
-      <div>
+      <div >
         <Header
           handleSubmit={this.handleSubmit}
           setCategory={this.setCategory}
@@ -72,11 +73,25 @@ class App extends Component {
           searchParam={this.searchParam}
         />
         <HeaderSearch />
-        <BodyCard/>
         
+        <div>
+     
+        {this.state.listOfStories.map((list, index) => {
+          return (
+              <BodyCard
+              key={index}
+              index={index}
+              title={list.title} 
+              points={list.points} 
+              author={list.author} 
+              comments={list.num_comments} 
+              url={list.url}
+              />
+          );
+        })}
+          </div>
+     
       </div>
-
-    
 
     );
   }
@@ -85,4 +100,5 @@ class App extends Component {
 
 
 export default App;
+
 
