@@ -14,9 +14,14 @@ class App extends Component {
     super(props);
 
     this.state = {
+      curerentPage: "1",
+      setCurrentPage: "1",
+      recordsPerPage: "10",
+      setListofStories: [],
       listOfStories: [],
       category: "stories",
       searchParam: ""
+
     };
   }
 
@@ -56,7 +61,6 @@ class App extends Component {
       this.setState({listOfStories: res.data.hits})
     }) 
   }
-
 
   render() {
     return (
