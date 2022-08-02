@@ -3,24 +3,22 @@ import { Component } from "react";
 import Header from "./components/Header";
 import HeaderSearch from './components/HeaderSearch';
 import BodyCard from "./components/BodyCard";
+import Pagination from "./components/Pagination";
 import axios from "axios";
-import * as React from 'react';
 
-
-
-
-
-//hackathon
-// testing
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      currentPage: "1",
+      setCurrentPage: "1",
+      recordsPerPage: "10",
+      setListofStories: [],
       listOfStories: [],
-      category: "stories",
+      category: "story",
+      searchInput: "",
       searchParam: ""
-
     };
   }
   
@@ -64,7 +62,9 @@ class App extends Component {
   
   render() {
     return (
-      <div >
+
+      <div className="app-root">
+        <HeaderSearch />
         <Header
           handleSubmit={this.handleSubmit}
           setCategory={this.setCategory}
@@ -72,25 +72,13 @@ class App extends Component {
           category={this.category}
           searchParam={this.searchParam}
         />
-        <HeaderSearch />
-        
-        <div>
-     
-        {this.state.listOfStories.map((list, index) => {
-          return (
-              <BodyCard
-              key={index}
-              index={index}
-              title={list.title} 
-              points={list.points} 
-              author={list.author} 
-              comments={list.num_comments} 
-              url={list.url}
-              />
-          );
-        })}
-          </div>
-     
+        <ul>{this.state.listOfStories.map(
+        (story, index)=>(
+        <BodyCard key={index} title={story.title} url={story.url} author={story.author} points={story.points} timePosted={story.created_at} comments={story.num_comments}/>
+        ))}
+        </ul>
+        <Pagination currentPage={this.state.currentPage} setCurrentPage={this.state.setCurrentPage} recordsPerPage={this.state.recordsPerPage} setListofStories={this.state.setListofStories} listOfStories={this.state.listOfStories} />      
+      
       </div>
 
     );
