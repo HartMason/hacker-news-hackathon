@@ -50,7 +50,9 @@ const textStyles = {
   textAlign:"left"
 }
 
-const HeaderSearch = () => (
+const HeaderSearch = (props) => {
+  const { handleChange, handleSubmit } = props;
+  return (
   <header style={headerStyles}>
     <div style={headerStyles}>
       <a href="https://news.ycombinator.com/">
@@ -63,7 +65,7 @@ const HeaderSearch = () => (
         <span style={{position:"relative", top: "2px", left: "26px", zIndex: "1"}}>
           <img src={magnifyingGlass} style={{color:"#ff742b", width:"24px", height:"24px", overflow:"none"}} alt="magnifying glass" />
         </span>
-        <input type="search" placeholder='Search stories by title, url or author' className="searchInput" style={searchInputStyles} />
+        <input type="search" placeholder='Search stories by title, url or author' className="searchInput" style={searchInputStyles} onChange={handleChange} onSubmit={handleSubmit}/>
       </div>
       <div style={{width:"10px"}}>
         <span style={{width:"7rem", display: "flex", justifyContent:"center", alignItems:"center", position:"relative", right:"150px", fontSize:"14px"}}>Search By
@@ -81,6 +83,6 @@ const HeaderSearch = () => (
     </div>
   </header>
 
-)
+)}
 
 export default HeaderSearch;

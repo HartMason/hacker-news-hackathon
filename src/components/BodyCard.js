@@ -35,14 +35,15 @@ const pointStyles = {
 }
 
 const BodyCard = (props) => {
-    const {title, url, author, points, comments, timePosted} = props;
+    const {title, url, author, points, comments, timePosted, storyTitle} = props;
     // let currentDate = new(Date)
     // let timeElapsed = currentDate - timePosted
 
     return(
 <li className="body-list" style={liStyles}>
     <div style={divStyles}>
-        <p className="article-title" style={titleStyles}>{title}</p>
+        {title ? <p className="article-title" style={titleStyles}>{title}</p>: <p className="article-title" style={titleStyles}>{storyTitle}</p>}
+        
         <a href={url}><p className="article-url" style={titleStyles}>({url})</p></a>
     </div>
     <div style={infoDivStyles}>
