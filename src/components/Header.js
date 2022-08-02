@@ -18,7 +18,7 @@ const Header = (props) => {
   return (
     <header>
       <form onSubmit={handleSubmit}>
-        <input type="text" value={searchParam} onChange={handleChange} />
+        {/* <input type="text" value={searchParam} onChange={handleChange} /> */}
         <select value={category} onChange={handleOption}>
           <option value={"story"}>Stories</option>
           <option value={"author"}>Author</option>

@@ -48,13 +48,23 @@ class App extends Component {
     this.setState({searchParam: input});
   };
 
+  handleChange = (event) => {
+    this.setState({searchInput: event.target.value})
+    this.setState({searchParam: event.target.value})
+  }
+
   handleSubmit = (e) => {
     e.preventDefault()
     if (this.state.category === "author") {
-      return axios.get(`http://hn.algolia.com/api/v1/search?tags=listOfStories,author_${this.state.searchParam}&hitsPerPage=50`).then((res) => {
+      return axios.get(`http://hn.algolia.com/api/v1/search?tags=story,author_${this.state.searchParam}&hitsPerPage=50`).then((res) => {
         this.setState({listOfStories: res.data.hits})
       }) 
-    }
+    };
+    if (this.state.category === "comments") {
+      return axios.get(`http://hn.algolia.com/api/v1/search?query=${this.state.searchParam}&tags=comment&hitsPerPage=50`).then((res) => {
+        this.setState({listOfStories: res.data.hits})
+      }) 
+    };
     axios.get(`http://hn.algolia.com/api/v1/search?query=${this.state.searchParam}&hitsPerPage=50`).then((res) => {
       this.setState({listOfStories: res.data.hits})
     }) 
@@ -64,7 +74,7 @@ class App extends Component {
     return (
 
       <div className="app-root">
-        <HeaderSearch />
+        <HeaderSearch handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
         <Header
           handleSubmit={this.handleSubmit}
           setCategory={this.setCategory}
@@ -74,7 +84,7 @@ class App extends Component {
         />
         <ul>{this.state.listOfStories.map(
         (story, index)=>(
-        <BodyCard key={index} title={story.title} url={story.url} author={story.author} points={story.points} timePosted={story.created_at} comments={story.num_comments}/>
+        <BodyCard key={index} title={story.title} storyTitle={story.story_title} url={story.url} author={story.author} points={story.points} timePosted={story.created_at} comments={story.num_comments}/>
         ))}
         </ul>
         <Pagination currentPage={this.state.currentPage} setCurrentPage={this.state.setCurrentPage} recordsPerPage={this.state.recordsPerPage} setListofStories={this.state.setListofStories} listOfStories={this.state.listOfStories} />      
