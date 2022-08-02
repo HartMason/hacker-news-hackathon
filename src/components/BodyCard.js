@@ -54,13 +54,4 @@ const BodyCard = (props) => {
 </li>
 )};
 
-
-
-
-
-
-
-
-
-
 export default BodyCard ;
