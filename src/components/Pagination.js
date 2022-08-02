@@ -1,3 +1,13 @@
-// import React from 'react';
+import React from 'react';
 
-// export default Pagination;
+const Pagination = () => (
+  <div>
+    <button>Button
+    </button>
+    <button>Button</button>
+  </div>
+)
+
+export default Pagination;
+
+
