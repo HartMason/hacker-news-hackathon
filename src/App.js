@@ -3,7 +3,7 @@ import { Component } from "react";
 import Header from "./components/Header";
 import HeaderSearch from './components/HeaderSearch';
 import BodyCard from "./components/BodyCard";
-// import Pagination from "./components/Pagination";
+import Pagination from "./components/Pagination";
 import axios from "axios";
 
 //hackathon
@@ -20,6 +20,7 @@ class App extends Component {
       setListofStories: [],
       listOfStories: [],
       category: "story",
+      searchInput: "",
       searchParam: ""
 
     };
@@ -64,7 +65,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="app-root">
         <HeaderSearch />
         <Header
           handleSubmit={this.handleSubmit}
@@ -78,7 +79,7 @@ class App extends Component {
         <BodyCard key={index} title={story.title} url={story.url} author={story.author} points={story.points} timePosted={story.created_at} comments={story.num_comments}/>
         ))}
         </ul>
-        {/* <Pagination currentPage={this.state.currentPage} setCurrentPage={this.state.setCurrentPage} recordsPerPage={this.state.recordsPerPage} setListofStories={this.state.setListofStories} listOfStories={this.state.listOfStories} />       */}
+        <Pagination currentPage={this.state.currentPage} setCurrentPage={this.state.setCurrentPage} recordsPerPage={this.state.recordsPerPage} setListofStories={this.state.setListofStories} listOfStories={this.state.listOfStories} />      
       
       </div>
 

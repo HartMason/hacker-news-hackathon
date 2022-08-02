@@ -3,6 +3,8 @@ import React from "react";
 const liStyles = {
     width: "100%",
     listStyle: "none",
+    marginTop: "8px",
+    marginBottom: "8px",
 }
 
 const divStyles = {
@@ -15,6 +17,7 @@ const divStyles = {
 const titleStyles = {
     fontSize: "14px",
     paddingRight: "8px",
+    marginBottom: "5px"
 }
 
 const infoDivStyles = {
@@ -33,6 +36,8 @@ const pointStyles = {
 
 const BodyCard = (props) => {
     const {title, url, author, points, comments, timePosted} = props;
+    // let currentDate = new(Date)
+    // let timeElapsed = currentDate - timePosted
 
     return(
 <li className="body-list" style={liStyles}>
