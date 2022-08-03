@@ -84,7 +84,7 @@ class App extends Component {
         />
         <ul>{this.state.listOfStories.map(
         (story, index)=>(
-        <BodyCard key={index} title={story.title} storyTitle={story.story_title} url={story.url} author={story.author} points={story.points} timePosted={story.created_at} comments={story.num_comments}/>
+        <BodyCard key={index} title={story.title} storyTitle={story.story_title} url={story.url} storyUrl={story.story_url} author={story.author} points={story.points} timePosted={story.created_at} comments={story.num_comments}/>
         ))}
         </ul>
         <Pagination currentPage={this.state.currentPage} setCurrentPage={this.state.setCurrentPage} recordsPerPage={this.state.recordsPerPage} setListofStories={this.state.setListofStories} listOfStories={this.state.listOfStories} />      
